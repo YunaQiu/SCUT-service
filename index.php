@@ -19,8 +19,30 @@
     $(function(){
 		$("nav#menu").mmenu();
 	});
+	
+	$(document).ready(function(){
+		var height = $(window).height();
+		$("#content").css("height", (height - 40) + "px");
+		$(window).resize(function() {
+			height = $(window).height();
+			$("#content").css("height", (height - 40) + "px");
+		});
+	});
   </script>
   <style type="text/css">
+  	html,body,#page{
+		height:100%;
+	}
+  	#header {
+		font-family:"微软雅黑";
+	}
+	#content {
+		padding:0px;
+		width:100%;
+	}
+	#welcome {
+		padding-top:20px;
+	}
 	a{
 		cursor:pointer;
 		text-decoration:none;
@@ -42,7 +64,7 @@
         SCUT 信息服务
     </div>
     
-    <div id="content" class="container">
+    <div id="welcome" class="container">
     	<h2>请选择你需要查询的服务：</h2><br/>
         <div class="row">
         	<div class="col-sm-5">
@@ -63,11 +85,12 @@
             </div>
         </div>
     </div>
+	<iframe id="content" frameborder="0" scrolling="yes"></iframe>
   </div>
   
   <nav id="menu">
     <ul>
-        <li class="mm-selected"><a href="index.php">首页</a></li>
+        <li class="mm-selected"><a onclick="menu(0)">首页</a></li>
         <li><a onclick="menu(1)">校园一卡通消费</a></li>
         <li><a onclick="menu(2)">我的课程表</a></li>
         <li><a onclick="menu(3)">我的图书馆</a></li>

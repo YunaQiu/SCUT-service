@@ -1,42 +1,54 @@
-<?php
-	$searchName = $_POST["name"];
-	$page = $_POST['page'] * 3;
-	$data = file_get_contents('http://junda.100steps.net/booksearch/' . $searchName. '/' . $page);
-	$object = json_decode($data);
-	$offset = $object -> book_offset;
-	$pTotal = $object -> pages_total;
-	$bTotal = $object -> books_total;
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0 user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap/bootstrap.min.js"></script>
+  <script src="searchbook.js"></script>
+  <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap/bootstrap-theme.min.css">
 
-	$result = "";
-	for ($j = $page; ($j < $page + 3) && ($j < $pTotal); $j++){
-		for ($i = 0; ($i < $bTotal - $offset) && ($i < 5); $i++){
-			$book = $object -> results[$i];
-			$result .= "
-			<tr>
-				<td>" . $book -> title . "</td>
-				<td>" . $book -> id . "</td>
-				<td>" . $book -> author . "</td>
-				<td>" . $book -> press . "</td>
-				<td>" . $book -> year . "</td>
-				<td>" . $book -> callno . "</td>			
-			</tr>";
-		}
-		$data = file_get_contents('http://junda.100steps.net/booksearch/' . $searchName. '/' . ($j + 1));
-		$object = json_decode($data);
-		$offset = $object -> book_offset;
+  <style type="text/css">
+  	body {
+		background-color:#EEE;
+		padding-top:20px;
 	}
-	if ($bTotal == 0)
-		$status = 'none';
-	else if ($pTotal <= 3)
-		$status = 'all';
-	else if ($page == 0)
-		$status = 'first';
-	else if ($j == $pTotal)
-		$status = 'last';
-	else
-		$status = 'nomal';
-	$response = new stdClass;
-	$response -> result = $result;
-	$response -> status = $status;
-	echo json_encode($response);
-?>
+  	h5 {
+		font-weight:bolder;
+	}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h5>请输入要查询的书籍名称：</h5>
+    <form class="form-inline" role="form">
+    	<div class="form-group">
+        	<label class="sr-only" for="searchBook">书籍名称：</label>
+            <input type="text" class="form-control" id="searchBook" placeholder="书籍名称">
+        </div>
+        <button type="button" class="btn btn-primary" id="search" onclick="doSearch();">查询</button>
+    </form><br/>
+    <div class="table-responsive">
+    	<table class="table table-hover" style="background-color:#F9F9F9;">
+        	<thead style="font-weight:bold;">
+            	<th>书名</th>
+                <th>书目id</th>
+                <th>作者</th>
+                <th>出版社</th>
+                <th>年份</th>
+                <th>索书号</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+        </div>
+        <ul class="pager">
+            <li id="previous" class="disabled"><a>&larr;上一页</a></li>
+            <li id="next" class="disabled"><a>下一页&rarr;</a></li>
+        </ul>
+  </div>
+</body>
+</html>
