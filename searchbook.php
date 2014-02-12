@@ -19,6 +19,9 @@
   	h5 {
 		font-weight:bolder;
 	}
+	a{
+		cursor:pointer;
+	}
   </style>
 </head>
 
