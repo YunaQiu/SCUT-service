@@ -22,6 +22,12 @@
 	a{
 		cursor:pointer;
 	}
+	.modal-title{
+		font-family:"微软雅黑";
+	}
+	#bookList tr{
+		cursor:pointer;
+	}
   </style>
 </head>
 
@@ -35,7 +41,7 @@
         </div>
         <button type="button" class="btn btn-primary" id="search">查询</button>
     </form><br/>
-    <div class="table-responsive">
+    <div class="table-responsive" id="bookList">
     	<table class="table table-hover" style="background-color:#F9F9F9;">
         	<thead style="font-weight:bold;">
             	<th>书名</th>
@@ -52,6 +58,41 @@
             <li id="previous" class="disabled"><a>&larr;上一页</a></li>
             <li id="next" class="disabled"><a>下一页&rarr;</a></li>
         </ul>
+  </div>
+  
+  <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modalTitle">傲慢与偏见</h4>
+            </div>
+            <div class="modal-body">
+                <p id="detail_name">书名：傲慢与偏见 aomanyupianjian  = Prideandprejudice / (英)珍妮·奥斯汀(JaneAusten)著 丁桂莲译</p>
+                <p id="detail_id">书目id：255934</p>
+                <p id="detail_author">作者：奥斯汀, aositing, 著 </p>
+                <p id="detail_press">出版社：北京: 外文出版社 2000</p>
+                <p id="detail_year">年份：2000</p>
+                <p id="detail_callno">索书号：H319.4:I34 </p>
+                <p>馆藏状态：
+                	<div class="table-responsive" id="detail_status">
+                    <table class="table">
+                        <thead>
+                            <th>馆址</th>
+                            <th>馆藏地</th>
+                            <th>书刊状态</th>
+                            <th>应还日期</th>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    </div>             
+                </p>                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
   </div>
 </body>
 </html>

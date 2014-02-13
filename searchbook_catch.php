@@ -11,13 +11,13 @@
 	for ($i = 0; ($i < $remain) && ($i < 20); $i++){
 		$book = $object -> results[$i];
 		$result .= "
-		<tr>
-			<td>" . $book -> title . "</td>
-			<td>" . $book -> id . "</td>
-			<td>" . $book -> author . "</td>
-			<td>" . $book -> press . "</td>
-			<td>" . $book -> year . "</td>
-			<td>" . $book -> callno . "</td>			
+		<tr class='book' data-toggle='modal' data-target='#detail'>
+			<td id='title'>" . $book -> title . "</td>
+			<td id='id'>" . $book -> id . "</td>
+			<td id='author'>" . $book -> author . "</td>
+			<td id='press'>" . $book -> press . "</td>
+			<td id='year'>" . $book -> year . "</td>
+			<td id='callno'>" . $book -> callno . "</td>			
 		</tr>";
 	}
 	

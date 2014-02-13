@@ -20,9 +20,7 @@ function doSearch(goPage){
 		page:goPage
 	},
 	function(data){
-		$('tbody').html(data.result);
-//		alert(data.status);
-//		alert(goPage);
+		$('#bookList tbody').html(data.result);
 		page = goPage;
 		switch (data.status){
 			case "none":
@@ -52,6 +50,32 @@ function doSearch(goPage){
 				$("#previous").attr("onclick", "doSearch(page - 1);");
 				$("#next").attr("onclick", "doSearch(page + 1);");
 		}
+		$(".book").click(function(){
+			bookDetail($(this));
+		});
+	},
+	"json");
+}
+
+function bookDetail($book){
+	var title = $book.find("#title").html();
+	var id = $book.find("#id").html();
+	var author = $book.find("#author").html();
+	var press = $book.find("#press").html();
+	var year = $book.find("#year").html();
+	var callno = $book.find("#callno").html();
+	//	alert(id);
+	$("#modalTitle").html(title);
+	$("#detail_id").html("书目id：" + id);
+	$("#detail_author").html("作者：" + author);
+	$("#detail_press").html("出版社：" + press);
+	$("#detail_year").html("年份：" + year);
+	$("#detail_callno").html("索书号：" + callno);
+	
+	$.get("searchbook_detail.php?id=" + id,
+	function(data){
+		$('#detail_name').html("书名：" + data.name);
+		$('#detail_status tbody').html(data.status);
 	},
 	"json");
 }
