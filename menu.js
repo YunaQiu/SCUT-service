@@ -1,11 +1,10 @@
 // JavaScript Document
-function menu(a){
+function menu(a, from){
 	var content;
 	switch(a){
 		case 0:
-			$("#welcome").css("display","block");
-			$("iframe").css("display","none");
-			return;
+			content = "welcome.php";
+			break;
 		case 1:
 			content = "ecard.php";
 			break;
@@ -36,10 +35,8 @@ function menu(a){
 		default:
 			return;		
 	}
-	$("iframe").attr("src",content);
-	$("#welcome").css("display","none");
-	$("iframe").css("display","block");
+	if (from == "index")
+		$("iframe").attr("src",content);
+	else 
+		window.location.href = content;
 }
-
-$(document).ready(function(){
-});
