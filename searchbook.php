@@ -33,7 +33,7 @@
         	<label class="sr-only" for="searchBook">书籍名称：</label>
             <input type="text" class="form-control" id="searchBook" placeholder="书籍名称">
         </div>
-        <button type="button" class="btn btn-primary" id="search" onclick="doSearch();">查询</button>
+        <button type="button" class="btn btn-primary" id="search">查询</button>
     </form><br/>
     <div class="table-responsive">
     	<table class="table table-hover" style="background-color:#F9F9F9;">
