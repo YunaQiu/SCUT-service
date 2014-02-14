@@ -1,19 +1,11 @@
 // JavaScript Document
-
-// trim string
-if (typeof(String.prototype.trim) !== "function") {
-	String.prototype.trim = function() {
-		return this.replace(/(^\s+)|(\s+$)/g, "");
-	}
-}
-
 var page = 0;
 var book;
 
 $(function(){
 	$("#search").click(function(){
 		var searchBook = $("#searchBook").val();
-		searchBook = searchBook.trim();
+		searchBook = searchBook.replace(/(^\s+)|(\s+$)/g, "");
 		if (searchBook == "")
 			return;
 		book = searchBook;
