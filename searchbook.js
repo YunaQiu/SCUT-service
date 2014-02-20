@@ -22,6 +22,7 @@ $(function(){
 });
 
 function doSearch(goPage){
+	$("body, #bookList tr").css("cursor","wait");
 	$.post("searchbook_catch.php?&t=" + Math.random(),
 	{
 		name:book,
@@ -29,6 +30,8 @@ function doSearch(goPage){
 	},
 	function(data){
 		$('#bookList tbody').html(data.result);
+		$("body").css("cursor","default");
+		$("#bookList tr").css("cursor","pointer");
 		page = goPage;
 		switch (data.status){
 			case "none":

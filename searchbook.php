@@ -25,9 +25,6 @@
 	.modal-title{
 		font-family:"微软雅黑";
 	}
-	#bookList tr{
-		cursor:pointer;
-	}
   </style>
 </head>
 
@@ -68,12 +65,12 @@
                 <h4 class="modal-title" id="modalTitle">傲慢与偏见</h4>
             </div>
             <div class="modal-body">
-                <p id="detail_name">书名：傲慢与偏见 aomanyupianjian  = Prideandprejudice / (英)珍妮·奥斯汀(JaneAusten)著 丁桂莲译</p>
-                <p id="detail_id">书目id：255934</p>
-                <p id="detail_author">作者：奥斯汀, aositing, 著 </p>
-                <p id="detail_press">出版社：北京: 外文出版社 2000</p>
-                <p id="detail_year">年份：2000</p>
-                <p id="detail_callno">索书号：H319.4:I34 </p>
+                <p id="detail_name">书名：</p>
+                <p id="detail_id">书目id：</p>
+                <p id="detail_author">作者：</p>
+                <p id="detail_press">出版社：</p>
+                <p id="detail_year">年份：</p>
+                <p id="detail_callno">索书号：</p>
                 <p>馆藏状态：
                 	<div class="table-responsive" id="detail_status">
                     <table class="table">
