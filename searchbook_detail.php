@@ -4,7 +4,7 @@
 	echo $data;	
 */
 	$searchID = $_GET['id'];
-	$data = file_get_contents('http://junda.100steps.net/bookdetail/' . $searchID);
+	$data = file_get_contents('http://junda.100steps.net/bookdetail?type=json&id=' . $searchID);
 	$object = json_decode($data);
 	$name = $object -> 题名;
 	$status = "";

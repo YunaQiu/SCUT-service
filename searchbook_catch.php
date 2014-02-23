@@ -1,7 +1,7 @@
 <?php
 	$searchName = $_POST["name"];
 	$page = $_POST['page'];
-	$data = file_get_contents('http://junda.100steps.net/booksearch_quick/' . $searchName. '/' . $page);
+	$data = file_get_contents('http://junda.100steps.net/booksearch_quick?type=json&bookname=' . $searchName. '&page_index=' . $page);
 	$object = json_decode($data);
 	$pTotal = $object -> pages_total;
 	$bTotal = $object -> books_total;
