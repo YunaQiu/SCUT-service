@@ -6,7 +6,6 @@
 	$searchID = $_GET['id'];
 	$data = file_get_contents('http://junda.100steps.net/bookdetail?type=json&id=' . $searchID);
 	$object = json_decode($data);
-	$name = $object -> 题名;
 	$status = "";
 	foreach ($object -> 馆藏状态 as $perStatus){
 		$status .= "
@@ -18,9 +17,7 @@
 		</tr>";
 	}
 	$response = new stdClass;
-	$response -> name = $name;
 	$response -> status = $status;
-//	echo $name . $status;
 	echo json_encode($response);
 
 ?>

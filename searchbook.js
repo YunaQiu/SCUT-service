@@ -77,16 +77,19 @@ function bookDetail($book){
 	var callno = $book.find("#callno").html();
 	//	alert(id);
 	$("#modalTitle").html(title);
+	$("#detail_name").html("书名：" + title);
 	$("#detail_id").html("书目id：" + id);
 	$("#detail_author").html("作者：" + author);
 	$("#detail_press").html("出版社：" + press);
 	$("#detail_year").html("年份：" + year);
 	$("#detail_callno").html("索书号：" + callno);
+	$("#detail_status tbody").html("");
 	
+	$("#detail_status").css("cursor","wait");
 	$.get("searchbook_detail.php?id=" + id,
-	function(data){
-		$('#detail_name').html("书名：" + data.name);
+	function(data){		
 		$('#detail_status tbody').html(data.status);
+		$("#detail_status").css("cursor","pointer");
 	},
 	"json");
 }

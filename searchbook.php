@@ -62,7 +62,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="modalTitle">傲慢与偏见</h4>
+                <h4 class="modal-title" id="modalTitle"></h4>
             </div>
             <div class="modal-body">
                 <p id="detail_name">书名：</p>
