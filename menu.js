@@ -1,4 +1,9 @@
 // JavaScript Document
+/**
+* 控制页面指向
+* params a ：转向的页面地址
+* params from ：取值(index/welcome)，通过判断触发事件来源选择对应的加载方式
+*/
 function menu(a, from){
 	var content;
 	switch(a){

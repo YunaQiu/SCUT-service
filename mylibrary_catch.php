@@ -11,8 +11,8 @@
 	    "passwd" => $password,
 	);
 	$post_fields = http_build_query($post_fields);
-//	$post_fields    =    'cmdACT=mylibrary.login&method=mylib&userid=D1330252240&passwd=522481';
 
+	//获取cookies
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $login_url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -20,11 +20,10 @@
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
 	curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
-//	$contents1 = curl_exec($ch);
 	curl_exec($ch);
 	curl_close($ch);
 
-
+	//查询借阅情况
 	$url='http://202.38.232.10/opac/servlet/opac.go?cmdACT=loan.list';
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
@@ -34,7 +33,7 @@
 	$contents = curl_exec($ch);
 	curl_close($ch);
 	
-	unlink($cookie_file);
+	unlink($cookie_file);		//删除cookies文件以免占用空间
 	$result = array();
 	if ($str = strpos($contents,"您还没有登录或登录超时"))
 		$result[0] = 'error';

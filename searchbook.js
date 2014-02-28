@@ -7,8 +7,8 @@ if (typeof(String.prototype.trim) !== "function") {
 	}
 }
 
-var page = 0;
-var book;
+var page = 0;		//当前页码
+var book;		//当前搜索书籍
 
 $(function(){
 	$("#search").click(function(){
@@ -33,7 +33,7 @@ function doSearch(goPage){
 		$("body").css("cursor","default");
 		$("#bookList tr").css("cursor","pointer");
 		page = goPage;
-		switch (data.status){
+		switch (data.status){	//根据数据状态设定翻页事件
 			case "none":
 				alert("找不到相关书籍");
 				$(".pager li").attr("class","disabled");
@@ -62,7 +62,7 @@ function doSearch(goPage){
 				$("#next").attr("onclick", "doSearch(page + 1);");
 		}
 		$(".book").click(function(){
-			bookDetail($(this));
+			bookDetail($(this));	//单击书籍条目信息时弹窗显示详细信息
 		});
 	},
 	"json");
@@ -75,7 +75,7 @@ function bookDetail($book){
 	var press = $book.find("#press").html();
 	var year = $book.find("#year").html();
 	var callno = $book.find("#callno").html();
-	//	alert(id);
+
 	$("#modalTitle").html(title);
 	$("#detail_name").html("书名：" + title);
 	$("#detail_id").html("书目id：" + id);

@@ -5,7 +5,7 @@
 	$object = json_decode($data);
 	$pTotal = $object -> pages_total;
 	$bTotal = $object -> books_total;
-	$remain = $bTotal - $page * 20;
+	$remain = $bTotal - $page * 20;		//从当前页开始剩余书目的数量
 
 	$result = "";
 	for ($i = 0; ($i < $remain) && ($i < 20); $i++){
@@ -21,6 +21,7 @@
 		</tr>";
 	}
 	
+	//判断书页状态
 	if ($bTotal == 0)
 		$status = 'none';
 	else if ($pTotal <= 1)

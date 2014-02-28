@@ -1,8 +1,4 @@
 <?php
-/*	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
-	$data = file_get_contents('http://junda.100steps.net/bookdetail/173166');
-	echo $data;	
-*/
 	$searchID = $_GET['id'];
 	$data = file_get_contents('http://junda.100steps.net/bookdetail?type=json&id=' . $searchID);
 	$object = json_decode($data);

@@ -9,6 +9,7 @@ if (typeof(String.prototype.trim) !== "function") {
 
 $(function(){
 	$("#login").click(function(){
+		//验证用户名密码是否为空
 		var userId = $("#userId").val();
 		userId = userId.trim();
 		var password = $("#password").val();
@@ -17,6 +18,8 @@ $(function(){
 			alert("请将信息填写完整");
 			return;
 		}
+		
+		//向后台查询借书情况
 		$("body,tr").css("cursor","wait");
 		$.post("mylibrary_catch.php?&t=" + Math.random(),
 		{
@@ -36,6 +39,7 @@ $(function(){
 				return;
 			}
 			else{
+				//将数据填入表格
 				var result = "";
 				for (var i = 0; i < data.length; i++){
 					result += '<tr>'

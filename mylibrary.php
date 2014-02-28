@@ -19,12 +19,6 @@
   	h5 {
 		font-weight:bolder;
 	}
-	a{
-		cursor:pointer;
-	}
-	.modal-title{
-		font-family:"微软雅黑";
-	}
   </style>
 </head>
 
